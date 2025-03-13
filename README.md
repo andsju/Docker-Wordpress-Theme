@@ -16,3 +16,5 @@ Volumes settings in **docker-compose.yml**
 ## Wordpress themes folder
 
 `wordpress/wp-content/themes/`
+
+Default theme name **underscores-me** generated from https://underscores.me/ 
