@@ -10,7 +10,8 @@ services:
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
     volumes:
-      - ./wordpress:/var/www/html
+      - wordpress:/var/www/html
+    mem_limit: 512m
 
   db:
     image: mysql:latest
@@ -22,6 +23,7 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - db:/var/lib/mysql
+    mem_limit: 512m
 
   phpmyadmin:
     image: phpmyadmin
@@ -32,6 +34,7 @@ services:
       PMA_HOST: db
       PMA_USER: exampleuser
       PMA_PASSWORD: examplepass
+  
   ftp:
     image: stilliard/pure-ftpd
     restart: always
@@ -40,13 +43,15 @@ services:
       - 30000-30009:30000-30009
     environment:
       PUBLICHOST: localhost
-      FTP_USER_NAME: ftpuser
-      FTP_USER_PASS: ftppass
-      FTP_USER_HOME: /home/ftpuser
+      FTP_USER_NAME: exampleuser
+      FTP_USER_PASS: examplepass
+      FTP_USER_HOME: /home/examplepass
     volumes:
-      - ./wordpress:/home/ftpuser/files
+      - wordpress:/home/examplepass/files
+    mem_limit: 256m
     depends_on:
       - wordpress
+      
 volumes:
   wordpress:
   db:
