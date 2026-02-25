@@ -47,6 +47,29 @@ Themes in WordPress are customizable templates that control the visual appearanc
 Default theme name **underscores-me** generated from https://underscores.me/ 
 
 
+#### Wordpress Themes folder in VSCode
+
+
+Volumes settings in docker-compose.yml are:
+
+```yaml
+    volumes:
+      - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes
+```
+
+This setting display volumne folder structure in VS Code explorer. 
+
+![FileZilla logo](screens/vscode_wp_themes_folder.png)
+
+
+It´s possible to display all container files in VS Code **(slowing down performance)** if volumes settings instead are:
+
+```yaml
+    volumes:
+      - ./wordpress:/var/www/html
+```
+
+
 ## Stop container 
 
 Terminate and stop container using terminal cmd `ctrl-c`
@@ -81,7 +104,7 @@ services:
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
     volumes:
-      - wordpress:/var/www/html
+      - ./wordpress/wp-content/themes:/var/www/html/wp-content/themes
     mem_limit: 512m
 
   db:
@@ -129,22 +152,7 @@ volumes:
 
 ```
 
-#### Display volumes Wordpress files in VS Code 
 
-
-Volumes settings in docker-compose.yml are:
-
-```yaml
-    volumes:
-      - wordpress:/var/www/html
-```
-
-It´s possible to display container files in VS Code **(slowing down performance)** if volumes settings instead are:
-
-```yaml
-    volumes:
-      - ./wordpress:/var/www/html
-```
 
 ------------------------------------------------------------------------------------------
 
