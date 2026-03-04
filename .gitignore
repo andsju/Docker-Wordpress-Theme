@@ -1,1 +1,6 @@
-wordpress/wp-content/themes/
+# Ignore all wordpress subdirectories
+wordpress/*
+
+# Except wp-content/
+!wordpress/
+!wordpress/wp-content/
